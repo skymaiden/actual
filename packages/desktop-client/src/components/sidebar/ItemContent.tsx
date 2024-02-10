@@ -31,6 +31,7 @@ export function ItemContent({
         userSelect: 'none',
         userDrag: 'none',
         cursor: 'pointer',
+        outlineOffset: -2,
         ...(forceActive ? activeStyle : {}),
       }}
       onClick={onClick}
@@ -38,7 +39,14 @@ export function ItemContent({
       {children}
     </View>
   ) : (
-    <AnchorLink to={to} style={style} activeStyle={activeStyle}>
+    <AnchorLink
+      to={to}
+      style={{
+        ...style,
+        outlineOffset: -2,
+      }}
+      activeStyle={activeStyle}
+    >
       {children}
     </AnchorLink>
   );

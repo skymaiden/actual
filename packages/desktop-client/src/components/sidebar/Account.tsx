@@ -93,6 +93,7 @@ export function Account({
               position: 'relative',
               borderLeft: '4px solid transparent',
               ...(updated && { fontWeight: 700 }),
+              outlineOffset: -2,
             }}
             activeStyle={{
               borderColor: theme.sidebarItemAccentSelected,
