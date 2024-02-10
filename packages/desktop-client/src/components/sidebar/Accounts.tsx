@@ -56,94 +56,108 @@ export function Accounts({
 
   return (
     <View>
-      <Account
-        name="All accounts"
-        to="/accounts"
-        query={queries.allAccountBalance()}
-        style={{ fontWeight, marginTop: 15 }}
-      />
-
-      {budgetedAccounts.length > 0 && (
-        <Account
-          name="For budget"
-          to="/accounts/budgeted"
-          query={queries.budgetedAccountBalance()}
-          style={{ fontWeight, marginTop: 13 }}
-        />
-      )}
-
-      {budgetedAccounts.map((account, i) => (
-        <Account
-          key={account.id}
-          name={account.name}
-          account={account}
-          connected={!!account.bank}
-          failed={failedAccounts && failedAccounts.has(account.id)}
-          updated={updatedAccounts && updatedAccounts.includes(account.id)}
-          to={getAccountPath(account)}
-          query={queries.accountBalance(account)}
-          onDragChange={onDragChange}
-          onDrop={onReorder}
-          outerStyle={makeDropPadding(i)}
-        />
-      ))}
-
-      {offbudgetAccounts.length > 0 && (
-        <Account
-          name="Off budget"
-          to="/accounts/offbudget"
-          query={queries.offbudgetAccountBalance()}
-          style={{ fontWeight, marginTop: 13 }}
-        />
-      )}
-
-      {offbudgetAccounts.map((account, i) => (
-        <Account
-          key={account.id}
-          name={account.name}
-          account={account}
-          connected={!!account.bank}
-          failed={failedAccounts && failedAccounts.has(account.id)}
-          updated={updatedAccounts && updatedAccounts.includes(account.id)}
-          to={getAccountPath(account)}
-          query={queries.accountBalance(account)}
-          onDragChange={onDragChange}
-          onDrop={onReorder}
-          outerStyle={makeDropPadding(i)}
-        />
-      ))}
-
-      {closedAccounts.length > 0 && (
-        <SecondaryItem
-          style={{ marginTop: 15 }}
-          title={'Closed accounts' + (showClosedAccounts ? '' : '...')}
-          onClick={onToggleClosedAccounts}
-          bold
-        />
-      )}
-
-      {showClosedAccounts &&
-        closedAccounts.map(account => (
+      <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+        <li>
           <Account
-            key={account.id}
-            name={account.name}
-            account={account}
-            to={getAccountPath(account)}
-            query={queries.accountBalance(account)}
-            onDragChange={onDragChange}
-            onDrop={onReorder}
+            name="All accounts"
+            to="/accounts"
+            query={queries.allAccountBalance()}
+            style={{ fontWeight, marginTop: 15 }}
           />
+        </li>
+        {budgetedAccounts.length > 0 && (
+          <li>
+            <Account
+              name="For budget"
+              to="/accounts/budgeted"
+              query={queries.budgetedAccountBalance()}
+              style={{ fontWeight, marginTop: 13 }}
+            />
+          </li>
+        )}
+
+        {budgetedAccounts.map((account, i) => (
+          <li key={account.id}>
+            <Account
+              name={account.name}
+              account={account}
+              connected={!!account.bank}
+              failed={failedAccounts && failedAccounts.has(account.id)}
+              updated={updatedAccounts && updatedAccounts.includes(account.id)}
+              to={getAccountPath(account)}
+              query={queries.accountBalance(account)}
+              onDragChange={onDragChange}
+              onDrop={onReorder}
+              outerStyle={makeDropPadding(i)}
+            />
+          </li>
         ))}
 
-      <SecondaryItem
-        style={{
-          marginTop: 15,
-          marginBottom: 9,
-        }}
-        onClick={onAddAccount}
-        Icon={SvgAdd}
-        title="Add account"
-      />
+        {offbudgetAccounts.length > 0 && (
+          <li>
+            <Account
+              name="Off budget"
+              to="/accounts/offbudget"
+              query={queries.offbudgetAccountBalance()}
+              style={{ fontWeight, marginTop: 13 }}
+            />
+          </li>
+        )}
+
+        {offbudgetAccounts.map((account, i) => (
+          <li key={account.id}>
+            <Account
+              name={account.name}
+              account={account}
+              connected={!!account.bank}
+              failed={failedAccounts && failedAccounts.has(account.id)}
+              updated={updatedAccounts && updatedAccounts.includes(account.id)}
+              to={getAccountPath(account)}
+              query={queries.accountBalance(account)}
+              onDragChange={onDragChange}
+              onDrop={onReorder}
+              outerStyle={makeDropPadding(i)}
+            />
+          </li>
+        ))}
+
+        {closedAccounts.length > 0 && (
+          <li>
+            <SecondaryItem
+              style={{ marginTop: 15 }}
+              title={'Closed accounts' + (showClosedAccounts ? '' : '...')}
+              onClick={onToggleClosedAccounts}
+              bold
+            />
+          </li>
+        )}
+
+        {showClosedAccounts &&
+          closedAccounts.map(account => (
+            <li key={account.id}>
+              <Account
+                name={account.name}
+                account={account}
+                to={getAccountPath(account)}
+                query={queries.accountBalance(account)}
+                onDragChange={onDragChange}
+                onDrop={onReorder}
+              />
+            </li>
+          ))}
+
+        <li>
+          <SecondaryItem
+            style={{
+              marginTop: 15,
+              marginBottom: 9,
+            }}
+            onClick={onAddAccount}
+            Icon={SvgAdd}
+            title="Add account"
+          />
+        </li>
+      </ul>
     </View>
   );
 }

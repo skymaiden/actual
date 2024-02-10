@@ -38,26 +38,32 @@ export function Tools() {
         forceActive={!isOpen && isActive}
       />
       {isOpen && (
-        <>
-          <SecondaryItem
-            title="Payees"
-            Icon={SvgStoreFront}
-            to="/payees"
-            indent={15}
-          />
-          <SecondaryItem
-            title="Rules"
-            Icon={SvgTuning}
-            to="/rules"
-            indent={15}
-          />
-          <SecondaryItem
-            title="Settings"
-            Icon={SvgCog}
-            to="/settings"
-            indent={15}
-          />
-        </>
+        <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+          <li>
+            <SecondaryItem
+              title="Payees"
+              Icon={SvgStoreFront}
+              to="/payees"
+              indent={15}
+            />
+          </li>
+          <li>
+            <SecondaryItem
+              title="Rules"
+              Icon={SvgTuning}
+              to="/rules"
+              indent={15}
+            />
+          </li>
+          <li>
+            <SecondaryItem
+              title="Settings"
+              Icon={SvgCog}
+              to="/settings"
+              indent={15}
+            />
+          </li>
+        </ul>
       )}
     </View>
   );

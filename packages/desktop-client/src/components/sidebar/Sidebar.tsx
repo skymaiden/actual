@@ -113,12 +113,20 @@ export function Sidebar() {
       </View>
 
       <View style={{ overflow: 'auto' }}>
-        <Item title="Budget" Icon={SvgWallet} to="/budget" />
-        <Item title="Reports" Icon={SvgReports} to="/reports" />
-
-        <Item title="Schedules" Icon={SvgCalendar} to="/schedules" />
-
-        <Tools />
+        <ul style={{ margin: 0, padding: 0, listStyle: 'none' }}>
+          <li>
+            <Item title="Budget" Icon={SvgWallet} to="/budget" />
+          </li>
+          <li>
+            <Item title="Reports" Icon={SvgReports} to="/reports" />
+          </li>
+          <li>
+            <Item title="Schedules" Icon={SvgCalendar} to="/schedules" />
+          </li>
+          <li>
+            <Tools />
+          </li>
+        </ul>
 
         <View
           style={{
