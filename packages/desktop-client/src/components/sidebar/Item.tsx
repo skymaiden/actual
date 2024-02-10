@@ -2,6 +2,7 @@
 import React, {
   type ComponentType,
   type MouseEventHandler,
+  type KeyboardEventHandler,
   type ReactNode,
   type SVGProps,
 } from 'react';
@@ -22,6 +23,7 @@ type ItemProps = {
   style?: CSSProperties;
   indent?: number;
   onClick?: MouseEventHandler<HTMLDivElement>;
+  onKeyUp?: KeyboardEventHandler<HTMLDivElement>;
   forceHover?: boolean;
   forceActive?: boolean;
 };
@@ -33,6 +35,7 @@ export function Item({
   style,
   to,
   onClick,
+  onKeyUp,
   indent = 0,
   forceHover = false,
   forceActive = false,
@@ -71,6 +74,7 @@ export function Item({
         }}
         to={to}
         onClick={onClick}
+        onKeyUp={onKeyUp}
         activeStyle={{
           borderLeft: '4px solid ' + theme.sidebarItemTextSelected,
           paddingLeft: 19 + indent - 4,

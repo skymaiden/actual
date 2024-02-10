@@ -1,4 +1,8 @@
-import React, { type MouseEventHandler, type ReactNode } from 'react';
+import React, {
+  type MouseEventHandler,
+  type KeyboardEventHandler,
+  type ReactNode,
+} from 'react';
 
 import { type CSSProperties } from '../../style';
 import { AnchorLink } from '../common/AnchorLink';
@@ -8,6 +12,7 @@ type ItemContentProps = {
   style: CSSProperties;
   to: string;
   onClick: MouseEventHandler<HTMLDivElement>;
+  onKeyUp: KeyboardEventHandler<HTMLDivElement>;
   activeStyle: CSSProperties;
   children: ReactNode;
   forceActive?: boolean;
@@ -17,6 +22,7 @@ export function ItemContent({
   style,
   to,
   onClick,
+  onKeyUp,
   activeStyle,
   forceActive,
   children,
@@ -35,6 +41,7 @@ export function ItemContent({
         ...(forceActive ? activeStyle : {}),
       }}
       onClick={onClick}
+      onKeyUp={onKeyUp}
     >
       {children}
     </View>

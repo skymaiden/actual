@@ -1,4 +1,9 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, {
+  useState,
+  useCallback,
+  useEffect,
+  type KeyboardEvent,
+} from 'react';
 import { useLocation } from 'react-router-dom';
 
 import {
@@ -16,6 +21,9 @@ import { SecondaryItem } from './SecondaryItem';
 export function Tools() {
   const [isOpen, setOpen] = useState(false);
   const onToggle = useCallback(() => setOpen(open => !open), []);
+  const onKeyUp = useCallback((evt: KeyboardEvent<HTMLDivElement>) => {
+    if (evt.key === 'Enter') setOpen(open => !open);
+  }, []);
   const location = useLocation();
 
   const isActive = ['/payees', '/rules', '/settings', '/tools'].some(route =>
@@ -34,6 +42,7 @@ export function Tools() {
         title="More"
         Icon={isOpen ? SvgCheveronDown : SvgCheveronRight}
         onClick={onToggle}
+        onKeyUp={onKeyUp}
         style={{ marginBottom: isOpen ? 8 : 0 }}
         forceActive={!isOpen && isActive}
       />
