@@ -135,6 +135,7 @@ function FinancesAppWithoutContext() {
           <FloatableSidebar />
 
           <View
+            role="main"
             style={{
               color: theme.pageText,
               backgroundColor: theme.pageBackground,

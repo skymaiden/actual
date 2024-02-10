@@ -17,6 +17,7 @@ export function FloatableSidebar() {
 
   return isNarrowWidth ? null : (
     <View
+      role="navigation"
       onMouseOver={
         sidebarShouldFloat
           ? e => {
