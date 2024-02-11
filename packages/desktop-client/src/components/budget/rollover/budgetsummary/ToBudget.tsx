@@ -80,6 +80,7 @@ export function ToBudget({
               onKeyUp={e => {
                 if (e.key === 'Enter') setMenuOpen('actions');
               }}
+              aria-label={`To budget menu ${format(num, 'financial')}`}
               data-cellname={sheetName}
               className={`${css([
                 styles.veryLargeText,

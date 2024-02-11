@@ -72,6 +72,7 @@ export function SidebarCategory({
             e.stopPropagation();
             setMenuOpen(true);
           }}
+          aria-label="Menu"
           style={{ color: 'currentColor', padding: 3 }}
         >
           <SvgCheveronDown
