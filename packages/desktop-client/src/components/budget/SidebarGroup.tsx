@@ -61,34 +61,51 @@ export function SidebarGroup({
         userSelect: 'none',
         WebkitUserSelect: 'none',
       }}
-      onClick={() => {
-        onToggleCollapse(group.id);
-      }}
     >
-      {!dragPreview && (
-        <SvgExpandArrow
-          width={8}
-          height={8}
-          style={{
-            marginRight: 5,
-            marginLeft: 5,
-            flexShrink: 0,
-            transition: 'transform .1s',
-            transform: collapsed ? 'rotate(-90deg)' : '',
-          }}
-        />
-      )}
       <div
+        role="button"
+        tabIndex={0}
+        onClick={() => {
+          onToggleCollapse(group.id);
+        }}
+        onKeyUp={e => {
+          if (e.key === 'Enter') onToggleCollapse(group.id);
+        }}
         style={{
-          textOverflow: 'ellipsis',
-          whiteSpace: 'nowrap',
-          overflow: 'hidden',
-          minWidth: 0,
+          display: 'flex',
+          flexDirection: 'row',
+          alignItems: 'center',
+          padding: 3,
+          paddingRight: 6,
+          outlineOffset: -1,
         }}
       >
-        {dragPreview && <Text style={{ fontWeight: 500 }}>Group: </Text>}
-        {group.name}
+        {!dragPreview && (
+          <SvgExpandArrow
+            width={8}
+            height={8}
+            style={{
+              marginRight: 5,
+              marginLeft: 5,
+              flexShrink: 0,
+              transition: 'transform .1s',
+              transform: collapsed ? 'rotate(-90deg)' : '',
+            }}
+          />
+        )}
+        <div
+          style={{
+            textOverflow: 'ellipsis',
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            minWidth: 0,
+          }}
+        >
+          {dragPreview && <Text style={{ fontWeight: 500 }}>Group: </Text>}
+          {group.name}
+        </div>
       </div>
+
       {!dragPreview && (
         <>
           <View style={{ marginLeft: 5, flexShrink: 0 }}>
@@ -100,6 +117,7 @@ export function SidebarGroup({
                 setMenuOpen(true);
               }}
               style={{ padding: 3 }}
+              aria-label="Menu"
             >
               <SvgCheveronDown width={14} height={14} />
             </Button>
