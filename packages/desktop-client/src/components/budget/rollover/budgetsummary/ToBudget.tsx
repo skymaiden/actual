@@ -74,7 +74,12 @@ export function ToBudget({
         >
           <PrivacyFilter blurIntensity={7}>
             <Block
+              role="button"
+              tabIndex={0}
               onClick={() => setMenuOpen('actions')}
+              onKeyUp={e => {
+                if (e.key === 'Enter') setMenuOpen('actions');
+              }}
               data-cellname={sheetName}
               className={`${css([
                 styles.veryLargeText,
