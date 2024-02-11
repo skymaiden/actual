@@ -153,6 +153,9 @@ export function AccountHeader({
                   '&:hover .hover-visible': {
                     opacity: 1,
                   },
+                  '& .hover-visible:focus-visible': {
+                    opacity: 1,
+                  },
                 }}
               >
                 <View

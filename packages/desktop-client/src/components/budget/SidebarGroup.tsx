@@ -156,11 +156,14 @@ export function SidebarGroup({
         backgroundColor: theme.tableRowHeaderBackground,
         overflow: 'hidden',
         '& .hover-visible': {
-          display: 'none',
+          opacity: 0,
         },
         ...(!dragPreview && {
           '&:hover .hover-visible': {
-            display: 'flex',
+            opacity: 1,
+          },
+          '& .hover-visible:focus-visible': {
+            opacity: 1,
           },
         }),
         ...(dragPreview && {

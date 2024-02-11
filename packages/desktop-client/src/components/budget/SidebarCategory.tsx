@@ -126,12 +126,15 @@ export function SidebarCategory({
         width: 200,
         overflow: 'hidden',
         '& .hover-visible': {
-          display: 'none',
+          opacity: 0,
         },
         ...(!dragging &&
           !dragPreview && {
             '&:hover .hover-visible': {
-              display: 'flex',
+              opacity: 1,
+            },
+            '& .hover-visible:focus-visible': {
+              opacity: 1,
             },
           }),
         ...(dragging && { color: theme.formInputTextPlaceholderSelected }),

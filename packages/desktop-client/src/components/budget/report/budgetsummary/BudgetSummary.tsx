@@ -68,6 +68,9 @@ export function BudgetSummary({ month }: BudgetSummaryProps) {
         '&:hover .hover-visible': {
           opacity: 1,
         },
+        '& .hover-visible:focus-visible': {
+          opacity: 1,
+        },
       }}
     >
       <NamespaceContext.Provider value={monthUtils.sheetForMonth(month)}>
