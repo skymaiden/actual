@@ -3,6 +3,7 @@ import React, {
   type ComponentType,
   type MouseEventHandler,
   type SVGProps,
+  type KeyboardEventHandler,
 } from 'react';
 
 import { theme, type CSSProperties } from '../../style';
@@ -22,6 +23,7 @@ type SecondaryItemProps = {
     | ComponentType<SVGProps<SVGSVGElement>>;
   style?: CSSProperties;
   onClick?: MouseEventHandler<HTMLDivElement>;
+  onKeyUp?: KeyboardEventHandler<HTMLDivElement>;
   bold?: boolean;
   indent?: number;
 };
@@ -32,6 +34,7 @@ export function SecondaryItem({
   style,
   to,
   onClick,
+  onKeyUp,
   bold,
   indent = 0,
 }: SecondaryItemProps) {
@@ -62,6 +65,7 @@ export function SecondaryItem({
         }}
         to={to}
         onClick={onClick}
+        onKeyUp={onKeyUp}
         activeStyle={{
           borderLeft: '4px solid ' + theme.sidebarItemTextSelected,
           paddingLeft: 14 - 4 + indent,

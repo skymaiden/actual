@@ -153,6 +153,9 @@ export function Accounts({
               marginBottom: 9,
             }}
             onClick={onAddAccount}
+            onKeyUp={evt => {
+              if (evt.key === 'Enter') onAddAccount();
+            }}
             Icon={SvgAdd}
             title="Add account"
           />
