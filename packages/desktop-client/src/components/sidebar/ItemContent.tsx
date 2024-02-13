@@ -12,6 +12,7 @@ type ItemContentProps = {
   style: CSSProperties;
   to: string;
   onClick: MouseEventHandler<HTMLDivElement>;
+  onKeyDown: KeyboardEventHandler<HTMLDivElement>;
   onKeyUp: KeyboardEventHandler<HTMLDivElement>;
   activeStyle: CSSProperties;
   children: ReactNode;
@@ -22,6 +23,7 @@ export function ItemContent({
   style,
   to,
   onClick,
+  onKeyDown,
   onKeyUp,
   activeStyle,
   forceActive,
@@ -41,6 +43,7 @@ export function ItemContent({
         ...(forceActive ? activeStyle : {}),
       }}
       onClick={onClick}
+      onKeyDown={onKeyDown}
       onKeyUp={onKeyUp}
     >
       {children}

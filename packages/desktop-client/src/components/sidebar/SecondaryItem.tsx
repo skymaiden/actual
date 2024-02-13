@@ -23,7 +23,7 @@ type SecondaryItemProps = {
     | ComponentType<SVGProps<SVGSVGElement>>;
   style?: CSSProperties;
   onClick?: MouseEventHandler<HTMLDivElement>;
-  onKeyUp?: KeyboardEventHandler<HTMLDivElement>;
+  onKeyDown?: KeyboardEventHandler<HTMLDivElement>;
   bold?: boolean;
   indent?: number;
 };
@@ -34,7 +34,7 @@ export function SecondaryItem({
   style,
   to,
   onClick,
-  onKeyUp,
+  onKeyDown,
   bold,
   indent = 0,
 }: SecondaryItemProps) {
@@ -65,7 +65,7 @@ export function SecondaryItem({
         }}
         to={to}
         onClick={onClick}
-        onKeyUp={onKeyUp}
+        onKeyDown={onKeyDown}
         activeStyle={{
           borderLeft: '4px solid ' + theme.sidebarItemTextSelected,
           paddingLeft: 14 - 4 + indent,
