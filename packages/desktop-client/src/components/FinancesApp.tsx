@@ -12,6 +12,7 @@ import {
   useHref,
 } from 'react-router-dom';
 
+import { css } from 'glamor';
 import hotkeys from 'hotkeys-js';
 
 import { SpreadsheetProvider } from 'loot-core/src/client/SpreadsheetProvider';
@@ -123,6 +124,33 @@ function FinancesAppWithoutContext() {
       <ExposeNavigate />
 
       <View style={{ height: '100%' }}>
+        {
+          // Apparently react-router doesn't have built-in hash link support,
+          // but installing react-router-hash-link is overkill for a single
+          // link. Let's use a plain <a> tag instead.
+        }
+        {/* eslint-disable no-restricted-syntax */}
+        <a
+          href="#main"
+          className={`skip-link focus-visible ${css({
+            backgroundColor: theme.buttonPrimaryBackground,
+            color: theme.buttonPrimaryText,
+            fontSize: '1.2em',
+            opacity: '0',
+            padding: '1em 2em',
+            position: 'absolute',
+            transform: 'translateY(-100%)',
+            zIndex: '9999',
+            '&:focus-visible': {
+              opacity: '1',
+              transform: 'translateY(0)',
+            },
+          })}`}
+        >
+          Skip to main content
+        </a>
+        {/* eslint-enable no-restricted-syntax */}
+
         <GlobalKeys />
 
         <View
@@ -135,6 +163,7 @@ function FinancesAppWithoutContext() {
           <FloatableSidebar />
 
           <View
+            id="main"
             role="main"
             style={{
               color: theme.pageText,
